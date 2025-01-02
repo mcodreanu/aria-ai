@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aria - AI Assistant</title>
+    <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon" />
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!-- Particle JS -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"
+      type="text/javascript"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <section id="oval" class="mb-4">
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-10">
+            <div
+              class="d-flex justify-content-center align-items-center"
+              style="height: 60vh"
+            >
+              <canvas
+                id="canvasOne"
+                width="700"
+                height="420"
+                style="position: absolute"
+              ></canvas>
+              <img
+                src=""
+                alt="ai-image-created"
+                id="image-created"
+                style="position: absolute"
+                hidden
+              />
+
+              <div id="ai-animation">
+                <div class="square">
+                  <span class="circle"></span>
+                  <span class="circle"></span>
+                  <span class="circle"></span>
+                </div>
+              </div>
+            </div>
+
+            <h5
+              class="text-center text-light ai-message"
+              style="font-size: 28px"
+            >
+              Ask me anything!
+            </h5>
+            <div id="audio-controls" class="text-light" hidden>
+              <button id="stop-button" class="mb-3">STOP</button>
+              <div id="progress-container" class="mt-1 mb-1">
+                <label for="progressBar">Progress:</label>
+                <input
+                  type="range"
+                  id="progressBar"
+                  min="0"
+                  max="100"
+                  value="0"
+                  step="0.1"
+                  disabled
+                />
+                <span id="currentTime">0:00</span> /
+                <span id="totalTime">0:00</span>
+              </div>
+              <label for="volumeSlider">Volume:</label>
+              <input
+                type="range"
+                id="volumeSlider"
+                min="0"
+                max="100"
+                value="50"
+                oninput="setVolume()"
+              />
+            </div>
+
+            <div class="col-md-12 mt-4 pt-4">
+              <div class="text-center">
+                <div id="text-input" class="d-flex">
+                  <input
+                    type="text"
+                    class="input-field"
+                    name="chatbox"
+                    id="chatbox"
+                    placeholder="type here..."
+                  />
+                  <button id="send-button"><i class="bi bi-send"></i></button>
+                  <button id="mic-button"><i class="bi bi-mic"></i></button>
+                  <button
+                    id="chat-button"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight"
+                    aria-controls="offcanvasRight"
+                  >
+                    <i class="bi bi-chat-dots"></i>
+                  </button>
+                  <button id="settings-button">
+                    <i class="bi bi-gear"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div
+        class="offcanvas offcanvas-end chat-canvas"
+        tabindex="-1"
+        id="offcanvasRight"
+        aria-labelledby="offcanvasRightLabel"
+      >
+        <div class="offcanvas-header">
+          <h5 id="offcanvasRightLabel" class="text-white">Chat</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div id="chat-canvas-body" class="offcanvas-body"></div>
+      </div>
+    </div>
+
+    <!-- JQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <!-- Bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Particle JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <script src="particle.js"></script>
+    <script src="script.js"></script>
+    <script src="controller.js"></script>
+    <script src="/eel.js"></script>
+  </body>
+</html>
